@@ -8,6 +8,7 @@ License:    MIT
 URL:        http://xcb.freedesktop.org/
 Source0:    http://xcb.freedesktop.org/dist/%{name}-%{version}.tar.gz
 Source101:  xcb-proto-rpmlintrc
+Source1001: packaging/xcb-proto.manifest 
 Requires:   pkgconfig
 BuildRequires:  python-devel
 
@@ -21,6 +22,7 @@ Description: %{summary}
 
 
 %build
+cp %{SOURCE1001} .
 
 %reconfigure --disable-shared
 
@@ -37,6 +39,7 @@ rm -rf %{buildroot}
 
 
 %files
+%manifest xcb-proto.manifest
 %defattr(-,root,root,-)
 %doc COPYING NEWS README TODO doc/xml-xcb.txt
 %{_libdir}/pkgconfig/xcb-proto.pc
