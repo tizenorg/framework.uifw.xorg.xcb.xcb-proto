@@ -1,0 +1,2 @@
+from Config import *
+addFilter("xcb-proto.* devel-file-in-non-devel-package")
