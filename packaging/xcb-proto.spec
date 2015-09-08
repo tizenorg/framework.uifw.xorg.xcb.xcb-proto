@@ -1,11 +1,11 @@
 Name:    xcb-proto
 Summary: XCB protocol descriptions
 Version: 1.7.1
-Release: 1
+Release: 3
 Group:   Development/Libraries
 License: MIT
 URL:     http://xcb.freedesktop.org/
-Source0: http://xcb.freedesktop.org/dist/%{name}-%{version}.tar.gz
+Source0: %{name}-%{version}.tar.gz
 #Source101:  xcb-proto-rpmlintrc
 
 BuildRequires:  python-devel
