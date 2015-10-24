@@ -1,0 +1,81 @@
+<xcb header="hwa" extension-xname="HWA" extension-name="HWA" major-version="1" minor-version="0">
+  <import>xproto</import>
+  <import>randr</import>
+  <!-- Types -->
+
+  <!-- Requests -->
+  <request name="QueryVersion" opcode="0">
+    <field type="CARD32" name="major_version" />
+    <field type="CARD32" name="minor_version" />
+    <reply>
+      <pad bytes="1" />
+      <field type="CARD32" name="major_version" />
+      <field type="CARD32" name="minor_version" />
+    </reply>
+  </request>
+
+  <request name="CursorEnable" opcode="1">
+    <field type="BOOL" name="enable" />
+    <pad bytes="3"/>
+    <reply>
+     <pad bytes="1"/>
+        <field type="CARD16" name="status"/>
+     <pad bytes="2"/>
+    </reply>
+  </request>
+
+  <request name="CursorRotate" opcode="2">
+    <field type="CRTC"   name="crtc_id" />
+    <field type="CARD16" name="degree" />
+    <reply>
+     <pad bytes="1"/>
+        <field type="CARD16" name="status"/>
+	<field type="CARD16" name="degree"/>
+     <pad bytes="20"/>
+     </reply>
+  </request>
+
+  <request name="ScreenInvertNegative" opcode="3">
+    <field type="CRTC" name="crtc_id" />
+    <field type="CARD8" name="enable" />
+    <reply>
+      <pad bytes="1" />
+      <field type="CARD8" name="status" />
+    </reply>
+  </request>
+
+  <request name="ScreenScale" opcode="4">
+    <field type="CRTC" name="crtc_id" />
+    <field type="CARD8" name="enable" />
+    <pad bytes="3" />
+    <field type="CARD32" name="x" />
+    <field type="CARD32" name="y" />
+    <field type="CARD32" name="w" />
+    <field type="CARD32" name="h" />
+    <reply>
+      <pad bytes="1" />
+      <field type="CARD8" name="status" />
+    </reply>
+  </request>
+
+  <!-- Overlay Hide/Show enum -->
+  <enum name="OVERLAY_LAYER">
+    <item name="UI"><value>0</value></item>
+    <item name="XV"><value>1</value></item>
+  </enum>
+
+  <request name="OverlayShowLayer" opcode="5">
+    <field type="CRTC" name="crtc_id" />
+    <field type="CARD16" name="layer" enum="OVERLAY_LAYER"/>
+  </request>
+
+  <request name="OverlayHideLayer" opcode="6">
+    <field type="CRTC" name="crtc_id" />
+    <field type="CARD16" name="layer" enum="OVERLAY_LAYER"/>
+  </request>
+
+  <!-- Events -->
+
+  <!-- Errors -->
+
+</xcb> 

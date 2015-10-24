@@ -1,0 +1,71 @@
+<xcb header="hwc" extension-xname="HWC" extension-name="HWC" major-version="2" minor-version="0">
+  <import>xproto</import>
+  <import>randr</import>
+
+  <!-- Types -->
+  <enum name="Composite_method">
+    <item name="Default"> <value>0</value> </item>
+    <item name="Scale_full"> <value>1</value> </item>
+    <item name="Scale_tight"> <value>2</value> </item>
+    <item name="Driver"> <value>3</value> </item>
+    <item name="Fill"> <value>4</value> </item>
+  </enum>
+
+  <struct name="DrawInfo">
+    <field type="CARD32" name="drawable" />
+    <field type="INT16" name="srcX" />
+    <field type="INT16" name="srcY" />
+    <field type="CARD16" name="srcWidth" />
+    <field type="CARD16" name="srcHeight" />
+    <field type="INT16" name="dstX" />
+    <field type="INT16" name="dstY" />
+    <field type="CARD16" name="dstWidth" />
+    <field type="CARD16" name="dstHeight" />
+    <field type="INT32" name="composite_methods" enum="Composite_method" />
+  </struct>
+
+  <!-- Requests -->
+  <request name="QueryVersion" opcode="0">
+    <field type="CARD32" name="major_version" />
+    <field type="CARD32" name="minor_version" />
+    <reply>
+      <pad bytes="1" />
+      <field type="CARD32" name="major_version" />
+      <field type="CARD32" name="minor_version" />
+    </reply>
+  </request>
+
+  <request name="Open" opcode="1">
+    <pad bytes="4" />
+    <field type="CRTC" name="crtc_id" />
+    <reply>
+      <pad bytes="1" />
+      <field type="CARD32" name="maxlayer" />
+    </reply>
+  </request>
+
+  <request name="SetDrawable" opcode="2">
+    <pad bytes="4" />
+    <field type="CRTC" name="crtc_id" />
+    <field type="CARD32" name="count" />
+    <list type="DrawInfo" name="draw_info">
+      <fieldref>count</fieldref>
+    </list>
+  </request>
+
+  <request name="SelectInput" opcode="3">
+    <field type="WINDOW" name="window" />
+    <field type="CARD32" name="mask" />
+  </request>
+
+  <!-- Events -->
+
+  <event name="ConfigureNotify" number="0">
+    <field type="CRTC" name="crtc_id" />
+    <field type="CARD32" name="maxlayer" />
+  </event>
+
+
+  <!-- Errors -->
+
+</xcb>

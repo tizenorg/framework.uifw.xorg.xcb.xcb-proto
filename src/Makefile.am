@@ -6,8 +6,10 @@ xcbinclude_HEADERS = \
 	damage.xml \
 	dpms.xml \
 	dri2.xml \
+	dri3.xml \
 	ge.xml \
 	glx.xml \
+	present.xml \
 	randr.xml \
 	record.xml \
 	render.xml \
@@ -28,7 +30,9 @@ xcbinclude_HEADERS = \
 	xselinux.xml \
 	xtest.xml \
 	xv.xml \
-	xvmc.xml
+	xvmc.xml \
+    hwa.xml \
+    hwc.xml
 
 if HAVE_XMLLINT
 check-local:

@@ -1,7 +1,7 @@
 Name:    xcb-proto
 Summary: XCB protocol descriptions
-Version: 1.7.1
-Release: 3
+Version: 1.10.1
+Release: 1
 Group:   Development/Libraries
 License: MIT
 URL:     http://xcb.freedesktop.org/
